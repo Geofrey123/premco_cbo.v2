@@ -113,7 +113,7 @@ nav {
     color: #fff;
     padding: 1rem;
     background-position: center;
-    background-image: url('images/IMG_3521.JPG'); /* Set the background image */
+    background-image: url('images/Hero\ pic.jpeg'); /* Set the background image */
     background-size: cover; /* Ensure the image covers the entire section */
     background-position: center; /* Center the image */
 }
@@ -152,7 +152,6 @@ nav {
 }
 
 .btn:hover {
-    color: yellowgreen;
     background: black;
     transform: scale(1.1);
 }
@@ -164,25 +163,6 @@ nav {
 .hero-content p {
     margin: 1rem 0;
     font-size: 1.2rem;
-}
-    
-
-.btn{
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 0.55rem 1rem;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.btn:hover{
-    color: yellowgreen;
-    background: black;
-    transform: scale(1.1);
-
 }
 
 .summ h3{
