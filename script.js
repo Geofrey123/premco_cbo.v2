@@ -1,10 +1,13 @@
 // Mobile menu toggle
 const toggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("navlinks");
+const body = document.body;
 
 if (toggle && navLinks) {
-  toggle.addEventListener("click", () => {
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
     navLinks.classList.toggle("active");
+    body.classList.toggle("menu-open");
   });
   
   // Close menu when clicking on a link
@@ -12,7 +15,23 @@ if (toggle && navLinks) {
   navLinksItems.forEach(link => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("active");
+      body.classList.remove("menu-open");
     });
+  });
+  
+  // Close menu when clicking on overlay
+  body.addEventListener("click", (e) => {
+    if (navLinks.classList.contains("active") && 
+        !navLinks.contains(e.target) && 
+        !toggle.contains(e.target)) {
+      navLinks.classList.remove("active");
+      body.classList.remove("menu-open");
+    }
+  });
+  
+  // Prevent menu from closing when clicking inside it
+  navLinks.addEventListener("click", (e) => {
+    e.stopPropagation();
   });
 }
 

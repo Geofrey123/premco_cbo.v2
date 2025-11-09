@@ -75,12 +75,19 @@ nav {
 .navlinks {
   padding-left: 70%;
     list-style: none;
-    display: flex; /* Hide navigation links by default */
+    display: flex; /* Show navigation links on desktop */
     gap: 1.5rem;
   }
 
 .navlinks.active {
     display: flex; /* Show navigation links when active */
+}
+
+/* Hide navlinks on mobile by default */
+@media (max-width: 768px) {
+    .navlinks {
+        display: none !important;
+    }
 }
 
 .navlinks a {
@@ -1556,39 +1563,77 @@ nav {
     .nav-links {
         height: auto;
         padding: 10px 15px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
     }
     
     .logo {
         font-size: 1.2rem;
-        margin-right: auto;
+        order: 2;
+        flex: 1;
+        text-align: center;
+        margin: 0;
     }
     
     #menu-toggle {
         display: block;
         color: #fff;
-        margin-left: auto;
+        order: 1;
         padding: 5px 10px;
+        margin: 0;
+        font-size: 2rem;
+        z-index: 1001;
+        flex-shrink: 0;
+        cursor: pointer;
     }
     
     .navlinks {
-        display: none;
+        display: none !important;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: #060606;
         flex-direction: column;
-        width: 100%;
-        padding: 20px 0 0 0;
-        gap: 1rem;
-        margin-top: 10px;
+        padding: 80px 0 0 0;
+        gap: 0;
+        margin: 0;
+        transition: left 0.3s ease-in-out;
+        z-index: 1000;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
     }
     
     .navlinks.active {
-        display: flex;
+        display: flex !important;
+        left: 0;
     }
     
     .navlinks li {
         width: 100%;
-        text-align: center;
-        padding: 10px 0;
+        text-align: left;
+        padding: 15px 25px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .navlinks a {
+        display: block;
+        width: 100%;
+    }
+    
+    /* Overlay when menu is open - using body pseudo-element */
+    body.menu-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        pointer-events: all;
     }
     
     /* Adjust margin-top for mobile header (smaller header height) */
@@ -1613,41 +1658,50 @@ nav {
     .hero-content h1 {
         font-size: 2rem;
         line-height: 1.2;
+        padding: 0 1.5rem;
     }
     
     .hero-content p {
         font-size: 1rem;
+        padding: 0 1.5rem;
+        text-align: center;
     }
     
     /* CTA section */
     .cta {
         margin: 15px;
-        padding: 15px;
+        padding: 20px;
     }
     
     .cta h3 {
-        padding: 30px 0 15px;
+        padding: 30px 20px 15px 20px;
         font-size: 1.3rem;
+        text-align: center;
     }
     
     .cta p {
-        padding: 0 15px 25px;
+        padding: 0 20px 25px 20px;
         font-size: 0.95rem;
+        text-align: justify;
+        line-height: 1.6;
     }
     
     /* About section */
     .abt {
-        padding: 1.5rem 1rem;
+        padding: 2rem 1.5rem;
     }
     
     .abt h1 {
         font-size: 2rem;
-        padding: 1.5rem 1rem;
+        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        text-align: center;
     }
     
     .abt p {
         font-size: 1rem;
-        padding: 1rem;
+        padding: 0 1.5rem 1.5rem 1.5rem;
+        text-align: justify;
+        line-height: 1.7;
     }
     
     /* Mission/Vision cards */
@@ -1700,14 +1754,15 @@ nav {
     
     .op h1 {
         font-size: 2rem;
-        padding-top: 40px;
-        padding-bottom: 20px;
+        padding: 40px 1.5rem 20px 1.5rem;
+        text-align: center;
     }
     
     .op p {
         font-size: 16px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 0 1.5rem 20px 1.5rem;
+        text-align: justify;
+        line-height: 1.7;
     }
     
     .programs {
@@ -1726,14 +1781,16 @@ nav {
     }
     
     .sec-cta h2 {
-        padding-top: 40px;
+        padding: 40px 1.5rem 20px 1.5rem;
         font-size: 24px;
+        text-align: center;
     }
     
     .sec-cta p {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 0 1.5rem 30px 1.5rem;
         font-size: 16px;
+        text-align: justify;
+        line-height: 1.7;
     }
     
     /* Contact section */
@@ -1743,15 +1800,19 @@ nav {
     
     .main-title {
         font-size: 2rem;
+        padding: 0 1.5rem 1rem 1.5rem;
     }
     
     .subtitle {
         font-size: 1rem;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
+        text-align: center;
+        line-height: 1.6;
     }
     
     .section-title {
         font-size: 1.5rem;
+        padding: 0 1.5rem 1rem 1.5rem;
     }
     
     .grid-lg-2 {
@@ -1806,6 +1867,25 @@ nav {
     
     .nav-links {
         height: auto;
+        padding: 10px 15px;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    #menu-toggle {
+        font-size: 1.8rem;
+        padding: 5px 8px;
+    }
+    
+    .navlinks {
+        width: 250px;
+        display: none !important;
+    }
+    
+    .navlinks.active {
+        display: flex !important;
     }
     
     /* Adjust margin-top for very small screens */
@@ -1829,44 +1909,58 @@ nav {
     
     .hero-content h1 {
         font-size: 1.6rem;
+        padding: 0 1.5rem;
     }
     
     /* CTA section */
     .cta {
         margin: 10px;
-        padding: 10px;
+        padding: 15px;
     }
     
     .cta h3 {
-        padding: 20px 0 10px;
+        padding: 20px 15px 10px 15px;
         font-size: 1.2rem;
+        text-align: center;
     }
     
     .cta p {
-        padding: 0 10px 20px;
+        padding: 0 15px 20px 15px;
         font-size: 0.9rem;
+        text-align: justify;
+        line-height: 1.6;
     }
     
     /* About section */
+    .abt {
+        padding: 1.5rem 1rem;
+    }
+    
     .abt h1 {
         font-size: 1.8rem;
-        padding: 1rem;
+        padding: 1.5rem 1rem 1rem 1rem;
+        text-align: center;
     }
     
     .abt p {
         font-size: 0.95rem;
+        padding: 0 1rem 1rem 1rem;
+        text-align: justify;
+        line-height: 1.7;
     }
     
     /* Programs */
     .op h1 {
         font-size: 1.8rem;
-        padding-top: 30px;
+        padding: 30px 1rem 15px 1rem;
+        text-align: center;
     }
     
     .op p {
         font-size: 15px;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding: 0 1rem 15px 1rem;
+        text-align: justify;
+        line-height: 1.7;
     }
     
     .program-card h3 {
@@ -1881,20 +1975,32 @@ nav {
     
     .sec-cta h2 {
         font-size: 20px;
-        padding-top: 30px;
+        padding: 30px 1rem 15px 1rem;
+        text-align: center;
+    }
+    
+    .sec-cta p {
+        padding: 0 1rem 20px 1rem;
+        text-align: justify;
+        line-height: 1.7;
     }
     
     /* Contact */
     .main-title {
         font-size: 1.75rem;
+        padding: 0 1rem 0.75rem 1rem;
     }
     
     .subtitle {
         font-size: 0.9rem;
+        padding: 0 1rem;
+        text-align: center;
+        line-height: 1.6;
     }
     
     .section-title {
         font-size: 1.3rem;
+        padding: 0 1rem 0.75rem 1rem;
     }
     
     .card-title {
