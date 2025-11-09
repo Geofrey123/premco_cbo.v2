@@ -7,10 +7,11 @@
     box-sizing: border-box;
   }
 
+
 body {
   font-family: Arial, Helvetica, sans-serif, 'Poppins';
   color: #333;
-  background: linear-gradient(rgba(3, 4, 94, 0.7), rgba(0, 119, 182, 0.7));
+  background: linear-gradient(rgb(237, 237, 240), rgb(153, 210, 240));
   font-size: 16px; /* Base font size */
 }
 
@@ -24,27 +25,31 @@ header {
     top: 0;
     width: 100%;
     color: #fff;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.753); /* Semi-transparent background */
+    z-index: 1000; /* Ensure header stays on top of all content */
 }
 
 nav {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    max-width: 1100px;
-    margin: auto;
-    padding: 1rem;
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.nav-con{
+  align-items: center;
+  height: 70px;
+  display: flex;
+  width: 100%;
+  background-color: #333;
+}
+
+.nav-con h3{
+  color: #ff7200;
+  padding-left: 70%;
 }
 
 .logo{
-    font-weight: bold;
-    font-size: 2rem;
-    color: white;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    padding-left: 7px;
-
+    
 }
 
 .logo span{
@@ -57,24 +62,35 @@ nav {
 
 /* NAV LINKS */
 
-.nav-links {
+.nav-links{
+  display: flex;
+  align-content: space-between;
+  height: 90px;
+  align-items: center;
+  background-color: #060606;
+  width: 100%;
+
+}
+
+.navlinks {
+  padding-left: 70%;
     list-style: none;
     display: flex; /* Hide navigation links by default */
     gap: 1.5rem;
   }
 
-.nav-links.active {
+.navlinks.active {
     display: flex; /* Show navigation links when active */
 }
 
-.nav-links a {
+.navlinks a {
     color: #fff;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
 }
 
-.nav-links a:hover {
+.navlinks a:hover {
     color: rgb(231, 116, 9);
 }
 /* MENU TOGGLE (for small screens) */
@@ -84,24 +100,10 @@ nav {
     cursor: pointer;
 }
 
-/* ===== Responsive===== */
-@media (max-width: 768px) {
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      gap: 1rem;
-      background: var(--dark);
-      position: absolute;
-      top: 60px;
-      right: 0;
-      padding: 1rem;
-      width: 200px;
-    }
-  
-  #menu-toggle {
-    display: block;
-    color: #fff;
- }
+
+
+.hero-sec {
+    margin-top: 160px; /* Account for fixed header height (70px nav-con + 90px nav-links) */
 }
 
 .hero {
@@ -111,7 +113,6 @@ nav {
     align-items: center;
     text-align: center;
     color: #fff;
-    padding: 1rem;
     background-position: center;
     background-image: url('images/Hero\ pic.jpeg'); /* Set the background image */
     background-size: cover; /* Ensure the image covers the entire section */
@@ -132,7 +133,19 @@ nav {
 .hero-content h1 {
     font-size: 3rem;
     font-weight: 700;
+    animation: riseUp 1.2s ease-out;
+}
 
+/* Rise Up Animation Keyframes */
+@keyframes riseUp {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .hero-content p {
@@ -140,19 +153,21 @@ nav {
     font-size: 1.2rem;
 }
 
-.btn {
-    padding: 0.5rem 1.5rem;
+.btn{
+    padding: 1rem 1.5rem;
+    height: 45px;
     border: none;
     background: green;
     color: #fff;
-    font-size: 1rem;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.2s ease, transform 0.3s ease;
+    margin-left: 55px;
 }
 
+
 .btn:hover {
-    background: black;
+    background: rgb(68, 67, 67);
     transform: scale(1.1);
 }
 
@@ -163,20 +178,6 @@ nav {
 .hero-content p {
     margin: 1rem 0;
     font-size: 1.2rem;
-}
-
-.summ h3{
-    text-align: center;
-    padding: 40px 0;
-    font-size: 2rem;
-
-}
-
-.summ p{
-    padding: 0 15px 50px;
-    color: beige;
-    font-size: 1.2rem;
-    text-align: center;
 }
 
 
@@ -261,108 +262,55 @@ nav {
     margin-top: 40px;
     text-align: center;
     padding: 20px;
+    border: 1px solid #363535;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(255, 114, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.95);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cta h3 {
     padding: 50px 0 30px;
     font-size: 1.8rem;
+    animation: panLeft 1.5s ease-out;
 }
 
 .cta p {
     padding: 0 30px 40px;
     font-size: 1.1rem;
     color: #222;
+    animation: panRight 1.5s ease-out 0.3s both;
 }
 
-/* RESPONSIVE DESIGN */
+/* Pan Animation Keyframes */
+@keyframes panLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
 
-/* Tablets */
-@media (max-width: 900px) {
-    .hero-content h1 {
-      font-size: 2.3rem;
+@keyframes panRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
     }
-  
-    .hero-content p {
-      font-size: 1rem;
+    100% {
+        transform: translateX(0);
+        opacity: 1;
     }
-  
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      background: rgba(0, 0, 0, 0.95);
-      position: absolute;
-      top: 70px;
-      right: 10px;
-      width: 60%;
-      text-align: center;
-      border-radius: 10px;
-      padding: 1rem;
-    }
-  
-    .nav-links.active {
-      display: flex;
-    }
-  
-    #menu-toggle {
-      display: block;
-    }
-  
-    .cd {
-      flex: 1 1 calc(45% - 1rem);
-    }
-  
-    .valu {
-      justify-content: center;
-    }
-  
-    .im h3 {
-      font-size: 1.5rem;
-    }
-  }
-  
-  /* Mobile */
-  @media (max-width: 600px) {
-    .hero {
-      height: auto;
-      padding: 4rem 1rem;
-    }
-  
-    .hero-content h1 {
-      font-size: 1.8rem;
-    }
-  
-    .btn {
-      flex-direction: column;
-    }
-  
-    .cd {
-      flex: 1 1 100%;
-    }
-  
-    .nav-links {
-      width: 80%;
-    }
-  
-    .im {
-      padding: 1rem;
-    }
-  
-    .im h3 {
-      font-size: 1.3rem;
-    }
-  
-    .summ p {
-      font-size: 1rem;
-    }
-  
-    .cta h3 {
-      font-size: 1.5rem;
-    }
-  }
+}
+
 
 /* Footer Container */
 .f-container {
-  background-color: rgb(8, 24, 199);
+  background-color: rgb(59, 59, 63);
   height: fit-content;
   width: 100%;
   padding: 30px 15px; /* Add padding for smaller screens */
@@ -436,7 +384,7 @@ nav {
 
 /* Footer Newsletter */
 .nl {
-  background-color: #3f4bf379;
+  background-color: #acb1f8d7;
   width: 270px; /* Full width on smaller screens */
   padding: 8px;
   border-radius: 5px;
@@ -452,12 +400,13 @@ nav {
 }
 
 /* Footer Submit Button */
-.sub {/* About Page */
+/* About Page */
 .abt {
   background: linear-gradient(rgb(3, 131, 190), rgb(17, 236, 83));
   height: fit-content;
   text-align: justify;
   padding: 2rem 1rem; /* Add padding for smaller screens */
+  margin-top: 160px; /* Account for fixed header height (70px nav-con + 90px nav-links) */
 }
 
 .abt h1 {
@@ -510,120 +459,6 @@ nav {
   padding: 0.5rem;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .abt h1 {
-    font-size: 2rem; /* Smaller font size for tablets */
-    padding: 1.5rem 1rem;
-  }
-
-  .abt p {
-    font-size: 0.9rem; /* Adjust font size for tablets */
-    padding: 1rem;
-  }
-
-  .mv {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center;
-  }
-
-  .mv-cad {
-    width: 90%; /* Full width for tablets */
-    margin-bottom: 1rem; /* Add spacing between items */
-  }
-}
-
-@media (max-width: 480px) {
-  .abt h1 {
-    font-size: 1.8rem; /* Smaller font size for mobile phones */
-    padding: 1rem;
-  }
-
-  .abt p {
-    font-size: 0.8rem; /* Smaller font size for mobile phones */
-    padding: 0.5rem;
-  }
-
-  .mv-cad {
-    width: 100%; /* Full width for mobile phones */
-    margin-bottom: 1rem;
-  }
-
-  .mv h3 {
-    font-size: 1.2rem; /* Adjust heading size for mobile phones */
-  }
-
-  .mv-cad p {
-    font-size: 0.9rem; /* Adjust paragraph size for mobile phones */
-  }
-}
-  background-color: #ff7200;
-  border-radius: 5px;
-  height: 35px;
-  width: 100px;
-  cursor: pointer;
-  margin: 0 auto; /* Center the button */
-}
-
-/* Footer Responsive Styles */
-@media (max-width: 768px) {
-  .f-container {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center;
-    text-align: center; /* Center-align text */
-  }
-
-  .f-logo, .ql, .cwu {
-    width: 100%; /* Full width for all sections */
-    margin-bottom: 1rem; /* Add spacing between sections */
-  }
-
-  .nl {
-    width: 90%; /* Adjust width for smaller screens */
-  }
-
-  .cad {
-    padding-left: 0; /* Remove left padding on smaller screens */
-    justify-content: center; /* Center items */
-  }
-
-  .cd {
-    width: 45%; /* Adjust width for tablets */
-    margin-bottom: 1rem; /* Add spacing between rows */
-  }
-}
-
-@media (max-width: 480px) {
-  .f-logo h3 {
-    font-size: 1.2rem; /* Smaller font size for very small screens */
-  }
-
-  .f-logo p {
-    font-size: 0.75rem; /* Smaller font size for very small screens */
-  }
-
-  .ql h3, .cwu h3 {
-    font-size: 1rem; /* Adjust heading size */
-  }
-
-  .ql ul li, .cwu ul li {
-    font-size: 0.875rem; /* Adjust list item size */
-  }
-
-  .nl p {
-    font-size: 0.75rem; /* Smaller font size for newsletter text */
-  }
-
-  .sub {
-    width: 80px; /* Adjust button size */
-    height: 30px;
-  }
-
-  .cd {
-    width: 90%; /* Full width for mobile screens */
-    margin-bottom: 1rem; /* Add spacing between rows */
-  }
-}
 
 .f-p{
     text-align: center;
@@ -636,6 +471,7 @@ nav {
     height: fit-content;
     text-align: justify;
     padding: 2rem 1rem; /* Add padding for smaller screens */
+    margin-top: 160px; /* Account for fixed header height (70px nav-con + 90px nav-links) */
 }
 
 .abt h1{
@@ -643,12 +479,26 @@ nav {
     color: whitesmoke;
     padding: 2rem 1rem; /* Adjust padding for smaller screens */
     font-size: 2.5rem; /* Adjust font size for smaller screens */
+    animation: fadeIn 1.2s ease-out;
 }
 
 .abt p{
     color: rgb(22, 22, 21);
     font-size: 1.1rem;
     padding: 1rem; /* Add padding for better readability */
+    animation: fadeIn 1.2s ease-out 0.3s both;
+}
+
+/* Fade In Animation Keyframes */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ====== Mission & Vision Section ====== */
@@ -694,12 +544,12 @@ nav {
 /*====  Slidding pictorials ==== */
 
 .slp{
-    
     display: flex;
     flex-wrap: wrap;
     background: linear-gradient(rgba(0, 255, 255, 0.705),rgb(248, 246, 246)) ;
     justify-content: space-between;
     padding: 2rem 1rem;
+    margin-top: 160px; /* Account for fixed header height (70px nav-con + 90px nav-links) */
 }
 
 
@@ -712,6 +562,7 @@ nav {
     padding: 40px 20px;
     color: black;
     font-size: 1.4rem;
+    animation: slideInFromLeft 1.2s ease-out;
 }
 
 .scroll-box {
@@ -721,12 +572,52 @@ nav {
     overflow: hidden;
     margin: 1rem 0;
     border-radius: 15px;
+    position: relative;
+    animation: slideInFromRight 1.2s ease-out 0.3s both;
+}
+
+.scroll-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease-in-out;
+    will-change: transform;
 }
   
 .scroll-box img {
-    width: 100%; /* match container width */
-    height: 100%; /* match container height */
+    width: 100%;
+    min-width: 100%;
+    flex-shrink: 0;
+    height: 350px;
     object-fit: cover;
+    display: block;
+}
+
+/* CSS animation removed - using JavaScript for smooth sliding */
+
+/* Slide in from left animation for text */
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide in from right animation for scroll-box */
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* ====== Values Section ====== */
@@ -781,53 +672,6 @@ nav {
     padding-top: 10px;
     font-size: 17px;
     text-align: center;
-}
-
-/* ====== Objectives Sections ====== */
-
-.obj{
-    box-sizing: border-box;
-    background: linear-gradient(rgba(46, 250, 124, 0.582),rgb(73, 73, 73));
-    width: 100%;
-    height: fit-content;
-}
-
-.obj h2{
-    text-align: center;
-    padding-top: 70px;
-    padding-bottom: 70px;
-    font-size: 40px;
-    color: #041f5a;
-
-}
-
-.obj-cad{
-    background-color: rgba(235, 236, 236, 0.411);
-    width: 100%;
-    padding-bottom: 40px;
-    padding-top: 40px;
-    margin-top: none;
-
-}
-
-.obj-cad ul{
-    padding-left: 40px;
-    padding-right: 40px;
-    color: rgb(14, 14, 13);
-    padding-bottom: 28px;
-}
-
-.obj-cad dt{
-    font-size: 24px;
-    padding-top: 10px;
-    color: rgb(12, 12, 12);
-}
-
-.obj-cad dd{
-    padding-left: 15px;
-    padding-top: 5px;
-    color: rgb(32, 31, 31);
-    font-size: 22px;
 }
 
 
@@ -1207,7 +1051,7 @@ nav {
     height: fit-content;
     width: 100%;
     padding-bottom: 50px;
-    margin-top: none;
+    margin-top: 160px; /* Account for fixed header height (70px nav-con + 90px nav-links) */
     border-radius: 8px;
 }
 
@@ -1217,6 +1061,7 @@ nav {
     padding-bottom: 25px;
     font-size: 40px;
     color: #041f5a;
+    animation: fadeInUp 1.2s ease-out;
 }
 
 .op p{
@@ -1224,6 +1069,7 @@ nav {
     font-size: 20px;
     padding-left: 40px;
     padding-right: 40px;
+    animation: fadeInUp 1.2s ease-out 0.3s both;
 }
 
 .programs{
@@ -1234,18 +1080,35 @@ nav {
     width: 100%;
     gap: 1rem;
     background-color: linear-gradient(rgba(186, 247, 209, 0.808),rgb(73, 73, 73));
-    padding-top: 50px;
+    padding: 50px 15px;
 }
 
 .program-card{
-    width: 30%;
+    width: 290px;
     height: 250px;
     margin-bottom: 40px;
     box-sizing: border-box;
-    background-color: rgba(89, 121, 63, 0.466);
     border-radius: 10px;
-    box-shadow: 0 5px 9px rgb(247, 248, 246);
+    box-shadow: 0 5px 9px rgb(83, 84, 84);
     transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition for hover effects */
+    animation: fadeInUp 1s ease-out both;
+}
+
+/* Stagger animation delays for program cards */
+.program-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.program-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.program-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.program-card:nth-child(4) {
+    animation-delay: 0.8s;
 }
 
 .program-card h3{
@@ -1257,361 +1120,53 @@ nav {
 
 .program-card p{
     padding-top: 10px;
-    color: white;
+    color: rgb(35, 37, 37);
     height: fit-content;
     padding: 0 14px 0 14px;
 }
 
-.program-card a{
-    text-decoration: none;
-    color: rgb(4, 52, 187);
-    font-size: 16px;
-    padding: 40px 40px;
-    
-}
 
 .program-card:hover {
     transform: scale(1.05); /* Slightly enlarge the element */
     filter: brightness(1.2); /* Increase brightness */
     cursor: pointer; /* Change cursor to pointer */
+    background-color: #0606065b;
 }
 
-/* -------- RESPONSIVENESS -------- */
 
-/* Tablets (2 cards per row) */
-@media (max-width: 900px) {
-    .program-card {
-        flex: 1 1 calc(45% - 1rem);
-        max-width: 100%;
-    }
-
-    .program-card h3 {
-        font-size: 1.4rem;
-    }
-}
-
-/* Mobile (1 card per row) */
-@media (max-width: 600px) {
-    .program-card {
-        flex: 1 1 100%;
-        width: 100%;
-    }
-
-    .program-card h3 {
-        font-size: 1.2rem;
-    }
-
-    .program-card p {
-        font-size: 0.95rem;
-    }
-}
 
 .sec-cta{
     background: linear-gradient(rgb(96, 233, 137),rgb(127, 127, 129));
     height: fit-content;
     width: 100%;
     padding-bottom: 40px;
-    
 }
 
 .sec-cta h2{
     padding-top: 80px;
     text-align: center;
     font-size: 35px;
+    animation: fadeInUp 1.2s ease-out;
 }
 
 .sec-cta p{
     text-align: start;
     padding-left: 67px;
     padding-right: 67px;
+    animation: fadeInUp 1.2s ease-out 0.3s both;
 }
 
-/* Projects section */
-
-.project-intro{
-    background: #1e3b8adc;
-    color: #fff;
-    text-align: center;
-    padding: 4rem 1.5rem;
-  }
-.project-intro h1 {
-    padding-top: 20px;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.project-intro p {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-.section1 {
-    box-sizing: border-box;
-    padding: 60px 20px;
-    width: 100%;
-    background: linear-gradient(rgba(244, 244, 248, 0.7), rgba(0, 119, 182, 0.7));
-}
-
-.section1 h2 {
-    text-align: center;
-    color: rgb(65, 64, 64);
-    margin-bottom: 30px;
-    font-size: 2rem;
-}
-
-.project-list {
-    justify-content: center;
-    padding-bottom: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    width: 100%;
-}
-
-.card {
-    width: 320px;
-    height: 320px;
-    perspective: 1000px; /* gives 3D effect */
-  }
-
-  .card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-  }
-
-  .card:hover .card-inner {
-    transform: rotateY(180deg);
-  }
-
-  .card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
-
-  .card-front {
-    background: #c7c5c5;
-    font-size: 1.5rem;
-  }
-
-.card-front h3 {
-    padding-top: 12px;
-    text-align: center;
-    margin: 1rem;
-    color: #0840db;
-    font-size: 1.3rem;
-}
-
-.card-front p {
-    margin: 0 1rem 1.2rem;
-    text-align: justify;
-    font-size: 18px;
-    color: #0a0a0a;
-}
-
-.card-back {
-    width: 100%;
-    background: #fff;
-    transform: rotateY(180deg);
-}
-
-
-
-.card-back img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.card-inner.flipped {
-    transform: rotateY(180deg);
-}
-
-
-.section2{
-    padding: 50px 20px;
-    height: fit-content;
-    width: 100%;
-    box-sizing: border-box
-}
-
-.section2 h2 {
-    text-align: center;
-    color: rgb(255, 247, 247);
-    font-size: 2rem;
-    margin-bottom: 30px;
-}
-
-.project-list2{
-    padding-top: 50px;
-    padding-bottom: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    height: fit-content;
-}
-
-.project-card1,
-.project-card2,
-.project-card3 {
-  flex: 1 1 calc(33.333% - 1.5rem);
-  max-width: 350px;
-  height: 300px;
-  border-radius: 15px;
-  background-size: cover;
-  background-position: center;
-}
-
-.project-card1 h3 {
-  text-align: center;
-  color: #121213;
-  font-size: bold;
-  font-size: 28px;
-  margin-top: 45px;
-}
-
-.project-card2 h3 {
-  text-align: center;
-  color: #121213;
-  font-size: bold;
-  font-size: 28px;
-  margin-top: 45px;
-  }
-
-
-.project-card3 h3 {
-  text-align: center;
-  color: #121213;
-  font-size: bold;
-  font-size: 28px;
-  margin-top: 45px;
-}
-
-.project-card1 p{
-    color: #c7c5c5;
-    padding-top: 60px;
-    background-color: #0a0a0a96;
-    text-align: center;
-}
-
-.project-card2 p{
-    color: #c7c5c5;
-    padding-top: 60px;
-    background-color: #0a0a0a96;
-    text-align: center;
-}
-
-.project-card3 p{
-    color: #c7c5c5;
-    padding-top: 60px;
-    background-color: #0a0a0a96;
-    text-align: center;
-}
-
-
-
-.project-card1{
-    background-image: url(images/storage\ water\ tank.jpeg);
-}
-
-
-.project-card2 {
-    background-image: url(images/Farm\ produce.jpeg);
-}
-
-.project-card3{
-    background-image: url(images/Banana.jpeg);
-}
-
-/* RESPONSIVENESS */
-
-/* Medium screens (tablets ≤900px) */
-@media (max-width: 900px) {
-    .project-intro h1 {
-      font-size: 2rem;
+/* Fade in from bottom animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
     }
-  
-    .project-intro p {
-      font-size: 1.1rem;
-      padding: 0 20px;
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
-  
-    .section1 h2,
-    .section2 h2 {
-      font-size: 1.8rem;
-    }
-  
-    .card {
-      width: 280px;
-      height: 280px;
-    }
-  
-    .project-card1,
-    .project-card2,
-    .project-card3 {
-      flex: 1 1 calc(45% - 1rem);
-      height: 250px;
-    }
-  }
-  
-  /* Small screens (mobile ≤600px) */
-  @media (max-width: 600px) {
-    .project-intro {
-      padding: 3rem 1rem;
-    }
-  
-    .project-intro h1 {
-      font-size: 1.6rem;
-    }
-  
-    .project-intro p {
-      font-size: 1rem;
-      padding: 0 10px;
-    }
-  
-    .section1 {
-      padding: 40px 10px;
-    }
-  
-    .section1 h2 {
-      font-size: 1.5rem;
-    }
-  
-    .card {
-      width: 100%;
-      height: 260px;
-    }
-  
-    .card-front p {
-      font-size: 0.95rem;
-    }
-  
-    .section2 h2 {
-      font-size: 1.5rem;
-    }
-  
-    .project-list2 {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .project-card1,
-    .project-card2,
-    .project-card3 {
-      flex: 1 1 100%;
-      width: 100%;
-      height: 220px;
-    }
-  }
+}
 
 
 .future-plans h2{
@@ -1653,7 +1208,7 @@ nav {
 
 .container{
     max-width: 1200px;
-    margin: 0 auto;
+    
     padding: 0 1rem;
     width: 100%;
 }
@@ -1661,6 +1216,7 @@ nav {
 .contact-section{
     padding: 5rem 0;
     background-color: rgba(166, 203, 252, 0.863);
+    margin-top: 160px; /* Account for fixed header height (70px nav-con + 90px nav-links) */
 }
 
 .text-center{
@@ -1688,6 +1244,7 @@ nav {
     font-weight: bold;
     color: hsl(var(--primary));
     margin-bottom: 1rem;
+    animation: fadeInUp 1.2s ease-out;
 }
 
 .subtitle{
@@ -1696,6 +1253,7 @@ nav {
     max-width: 48rem;
     margin: 0 auto;
     line-height: 1.75;
+    animation: fadeInUp 1.2s ease-out 0.3s both;
 }
 
 .grid{
@@ -1717,6 +1275,7 @@ nav {
     font-weight: bold;
     color: hsl(var(--primary));
     margin-bottom: 2rem;
+    animation: fadeInUp 1.2s ease-out 0.2s both;
 }
 
 .con-card{
@@ -1724,6 +1283,24 @@ nav {
     border-radius: 6px;
     box-shadow: rgb(107, 107, 107);
     overflow: hidden;
+    animation: fadeInUp 1s ease-out both;
+}
+
+/* Stagger animation delays for contact cards */
+.con-card:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+.con-card:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.con-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.con-card:nth-child(4) {
+    animation-delay: 0.7s;
 }
 
 .card-header{
@@ -1777,6 +1354,7 @@ nav {
 
 .form-card{
     box-shadow: var(--shadow-medium);
+    animation: fadeInUp 1.2s ease-out 0.5s both;
 }
 
 .form-content{
@@ -1869,5 +1447,483 @@ nav {
 
     .main-title{
         font-size: 3.5rem;
+    }
+}
+
+/* ====== COMPREHENSIVE MOBILE RESPONSIVE STYLES ====== */
+
+/* Tablet and below (max-width: 992px) */
+@media (max-width: 992px) {
+    /* Navigation adjustments */
+    .nav-con h3 {
+        padding-left: 50%;
+        font-size: 0.9rem;
+    }
+    
+    .navlinks {
+        padding-left: 50%;
+        gap: 1rem;
+    }
+    
+    /* Hero section */
+    .hero-content {
+        padding: 3rem 2rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    /* CTA section */
+    .cta {
+        margin: 20px;
+        padding: 15px;
+    }
+    
+    .cta h3 {
+        padding: 30px 0 20px;
+        font-size: 1.5rem;
+    }
+    
+    .cta p {
+        padding: 0 20px 30px;
+        font-size: 1rem;
+    }
+    
+    /* Programs section */
+    .op h1 {
+        font-size: 2.5rem;
+        padding-top: 60px;
+    }
+    
+    .op p {
+        font-size: 18px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    
+    .program-card {
+        width: calc(50% - 1rem);
+        min-width: 250px;
+    }
+    
+    .sec-cta h2 {
+        padding-top: 50px;
+        font-size: 28px;
+    }
+    
+    .sec-cta p {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    
+    /* Footer */
+    .f-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .f-logo,
+    .ql,
+    .cwu {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+}
+
+/* Mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Header and Navigation */
+    .nav-con {
+        height: 60px;
+        padding: 0 15px;
+    }
+    
+    .nav-con h3 {
+        padding-left: 0;
+        font-size: 0.85rem;
+        flex: 1;
+    }
+    
+    .nav-con .btn {
+        margin-left: 10px;
+        padding: 0.7rem 1rem;
+        height: 35px;
+        font-size: 0.85rem;
+    }
+    
+    .nav-links {
+        height: auto;
+        padding: 10px 15px;
+        flex-wrap: wrap;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+        margin-right: auto;
+    }
+    
+    #menu-toggle {
+        display: block;
+        color: #fff;
+        margin-left: auto;
+        padding: 5px 10px;
+    }
+    
+    .navlinks {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px 0 0 0;
+        gap: 1rem;
+        margin-top: 10px;
+    }
+    
+    .navlinks.active {
+        display: flex;
+    }
+    
+    .navlinks li {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Adjust margin-top for mobile header (smaller header height) */
+    .hero-sec,
+    .abt,
+    .slp,
+    .op,
+    .contact-section {
+        margin-top: 120px; /* Reduced for mobile header */
+    }
+    
+    /* Hero section */
+    .hero {
+        height: 70vh;
+        min-height: 400px;
+    }
+    
+    .hero-content {
+        padding: 2rem 1rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    /* CTA section */
+    .cta {
+        margin: 15px;
+        padding: 15px;
+    }
+    
+    .cta h3 {
+        padding: 30px 0 15px;
+        font-size: 1.3rem;
+    }
+    
+    .cta p {
+        padding: 0 15px 25px;
+        font-size: 0.95rem;
+    }
+    
+    /* About section */
+    .abt {
+        padding: 1.5rem 1rem;
+    }
+    
+    .abt h1 {
+        font-size: 2rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .abt p {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+    
+    /* Mission/Vision cards */
+    .mv {
+        flex-direction: column;
+        padding: 1.5rem 1rem;
+    }
+    
+    .mv-cad {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    /* Sliding pictorials */
+    .slp {
+        flex-direction: column;
+        padding: 1.5rem 1rem;
+    }
+    
+    .con-slp1,
+    .scroll-box {
+        width: 100%;
+        margin: 1rem 0;
+    }
+    
+    .con-slp1 p {
+        padding: 20px 15px;
+        font-size: 1.2rem;
+    }
+    
+    .scroll-box {
+        height: 300px;
+    }
+    
+    /* Values section */
+    .val {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .val-cad {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    /* Programs section */
+    .op {
+        padding-bottom: 30px;
+    }
+    
+    .op h1 {
+        font-size: 2rem;
+        padding-top: 40px;
+        padding-bottom: 20px;
+    }
+    
+    .op p {
+        font-size: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .programs {
+        flex-direction: column;
+        padding: 30px 15px;
+    }
+    
+    .program-card {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .sec-cta {
+        padding-bottom: 30px;
+    }
+    
+    .sec-cta h2 {
+        padding-top: 40px;
+        font-size: 24px;
+    }
+    
+    .sec-cta p {
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 16px;
+    }
+    
+    /* Contact section */
+    .contact-section {
+        padding: 3rem 0;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .grid-lg-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .grid-sm-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .con-card {
+        margin-bottom: 1rem;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Footer */
+    .f-container {
+        padding: 20px 15px;
+    }
+    
+    .f-logo h3,
+    .ql h3,
+    .cwu h3 {
+        font-size: 1.1rem;
+    }
+    
+    .nl {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Small phones (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Header */
+    .nav-con {
+        height: 55px;
+    }
+    
+    .nav-con h3 {
+        font-size: 0.75rem;
+    }
+    
+    .nav-con .btn {
+        padding: 0.5rem 0.8rem;
+        height: 30px;
+        font-size: 0.75rem;
+    }
+    
+    .nav-links {
+        height: auto;
+    }
+    
+    /* Adjust margin-top for very small screens */
+    .hero-sec,
+    .abt,
+    .slp,
+    .op,
+    .contact-section {
+        margin-top: 110px;
+    }
+    
+    /* Hero section */
+    .hero {
+        height: 60vh;
+        min-height: 350px;
+    }
+    
+    .hero-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    /* CTA section */
+    .cta {
+        margin: 10px;
+        padding: 10px;
+    }
+    
+    .cta h3 {
+        padding: 20px 0 10px;
+        font-size: 1.2rem;
+    }
+    
+    .cta p {
+        padding: 0 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* About section */
+    .abt h1 {
+        font-size: 1.8rem;
+        padding: 1rem;
+    }
+    
+    .abt p {
+        font-size: 0.95rem;
+    }
+    
+    /* Programs */
+    .op h1 {
+        font-size: 1.8rem;
+        padding-top: 30px;
+    }
+    
+    .op p {
+        font-size: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .program-card h3 {
+        font-size: 24px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    
+    .program-card p {
+        font-size: 14px;
+    }
+    
+    .sec-cta h2 {
+        font-size: 20px;
+        padding-top: 30px;
+    }
+    
+    /* Contact */
+    .main-title {
+        font-size: 1.75rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .card-title {
+        font-size: 1rem;
+    }
+    
+    .form-input,
+    .form-textarea {
+        font-size: 0.875rem;
+    }
+    
+    /* Scroll box */
+    .scroll-box {
+        height: 250px;
+    }
+    
+    .con-slp1 p {
+        font-size: 1.1rem;
+        padding: 15px 10px;
+    }
+    
+    /* Footer */
+    .f-logo h3 {
+        font-size: 1rem;
+    }
+    
+    .f-logo p,
+    .ql ul a,
+    .cwu p {
+        font-size: 0.85rem;
     }
 }
