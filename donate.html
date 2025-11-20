@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate — PreMCO</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="nav-con">
+      <h3>0718735224</h3>
+      <a class="btn" href="donate.html" aria-label="Donate">Donate</a>
+    </div>
+    <nav>
+      <div class="nav-links">
+        <div id="menu-toggle">&#9776;</div>
+        <div class="logo"><img src="images/logo 3D.png" alt="PreMCO logo"></div>
+        <ul class="navlinks" id="navlinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="abt" style="margin-top:160px; padding:2rem 1rem;">
+      <h1 style="text-align:center; color:whitesmoke;">Support PreMCO</h1>
+      <p style="text-align:center; color:#111; max-width:800px; margin:0.5rem auto 2rem;">Your contribution helps us run community programs, provide trainings, and improve livelihoods in mining regions. Choose an amount and provide your details below.</p>
+
+      <div style="max-width:700px; margin:0 auto; background:rgba(147, 147, 147, 0.95); padding:1.5rem; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.12);">
+        <form id="donation-form">
+          <div style="margin-bottom:1rem;">
+            <label for="amount">Donation amount (KES)</label>
+            <input type="number" id="amount" name="amount" class="form-input" placeholder="e.g. 1000" min="1" required>
+          </div>
+
+          <div class="form-grid mb-4" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div>
+              <label for="firstName">First name</label>
+              <input type="text" id="firstName" name="firstName" class="form-input" required>
+            </div>
+            <div>
+              <label for="lastName">Last name</label>
+              <input type="text" id="lastName" name="lastName" class="form-input" required>
+            </div>
+          </div>
+
+          <div style="margin-bottom:1rem;">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+          </div>
+
+          <div style="margin-bottom:1rem;">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="e.g. +2547..." required>
+          </div>
+
+          <div style="margin-bottom:1rem;">
+            <label for="method">Payment method</label>
+            <select id="method" name="method" class="form-input" required>
+              <option value="Mpesa">Mpesa (PayBill)</option>
+              <option value="Bank">Bank Transfer</option>
+            </select>
+          </div>
+
+          <div style="text-align:center; margin-top:1rem;">
+            <button type="submit" class="btn">Donate now</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div  class="f-container">
+      <div class="f-logo">
+        <h3><img src="images/logo 3D.png" height="42px" width="42px" alt=""></h3>
+            <div class="ico">
+              <p>Migori,Ombo Street</p>
+            </div>
+            <div class="ico">
+              <p><a href="premcokenya@gmail.com">premcokenya@gmail.com</a></p>
+            </div>
+            <div class="ico">
+              <p>+254799667289</p>
+            </div>
+      </div>
+        
+      <div class="ql">
+        <h3>Quick Links</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+      </div>
+        
+      <div class="cwu">
+        <h3>Connect With Us</h3>
+          <div class="nl">
+            <h4>Newsletter</h4>
+            <p>Stay updated with our latest news and programs.</p>
+            <form action="#">
+              <input type="email" placeholder="Enter your email" required>
+              <button class="sub" type="submit">Subscribe</button>
+            </form>
+          </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="f-p"><p>&copy; 2025 Precious Metals Community Outreach (PreMCO). All Rights Reserved.</p></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

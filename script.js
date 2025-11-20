@@ -45,6 +45,29 @@ if (contactForm) {
   });
 }
 
+// Donation form submission
+const donationForm = document.getElementById('donation-form');
+if (donationForm) {
+  donationForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const amount = parseFloat(document.getElementById('amount').value);
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const method = document.getElementById('method').value;
+
+    if (isNaN(amount) || amount <= 0) {
+      alert('Please enter a valid donation amount.');
+      return;
+    }
+
+    // Simple confirmation flow for demo purposes
+    alert(`Thank you ${firstName} ${lastName}!\nWe received your donation request of KES ${amount.toFixed(2)} via ${method}.\nWe will contact you at ${email || phone} with payment instructions.`);
+    this.reset();
+  });
+}
+
 // Scroll animations
 const animatedElements = document.querySelectorAll(".fade-in, .slide-left, .slide-right");
 

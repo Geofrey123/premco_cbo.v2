@@ -49,15 +49,29 @@ nav {
 }
 
 .logo{
-    
-}
-
-.logo span{
-    color: #ff7200;
+        padding-left: 8px; /* move closer to the left edge */
+        width: auto;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
 }
 
 .logo:hover{
-    transform: scaleX(1.1);
+        transform: scaleX(1.03);
+}
+
+/* Larger logo image with no white background (keeps original transparency) */
+.logo img{
+    height: 64px; /* larger on desktop */
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .logo img{
+        height: 48px; /* smaller on mobile */
+    }
 }
 
 /* NAV LINKS */
@@ -73,11 +87,12 @@ nav {
 }
 
 .navlinks {
-  padding-left: 70%;
-    list-style: none;
-    display: flex; /* Show navigation links on desktop */
-    gap: 1.5rem;
-  }
+    padding-left: 70%;
+    padding-right: 30px; /* add right padding so the ul shifts by ~30px */
+        list-style: none;
+        display: flex; /* Show navigation links on desktop */
+        gap: 1.5rem;
+    }
 
 .navlinks.active {
     display: flex; /* Show navigation links when active */
@@ -167,9 +182,11 @@ nav {
     background: green;
     color: #fff;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: background-color 0.2s ease, transform 0.3s ease;
     margin-left: 55px;
+    text-decoration: none; /* remove underline for anchor buttons */
+    display: inline-block; /* allow padding to apply to anchors */
 }
 
 
@@ -1530,14 +1547,22 @@ nav {
         align-items: center;
         text-align: center;
     }
+
+    .f-logo h3{
+        font-size: 1.15rem; /* slightly smaller so it aligns better in footer */
+        color: white;
+        margin: 0; /* remove default margins so alignment is clean */
+        font-weight: 600;
+        line-height: 1; /* keep it compact for vertical centering */
     
-    .f-logo,
+}
+
+.f-logo,
     .ql,
     .cwu {
         width: 100%;
         margin-bottom: 2rem;
     }
-}
 
 /* Mobile devices (max-width: 768px) */
 @media (max-width: 768px) {
